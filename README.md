@@ -1,3 +1,3 @@
-# Mern_Project
+# Spotify_Clone
 
-Creating a Project and learning along..
+Creating a Project of Spotify Clone and Learning all the way...
