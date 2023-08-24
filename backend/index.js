@@ -1,9 +1,11 @@
-// import express from "express";
-// import mongoose from "mongoose";
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from"dotenv";
+dotenv.config();
 
-const express =require("express");
-const mongoose =require("mongoose");
-require("dotenv").config();
+// const express =require("express");
+// const mongoose =require("mongoose");
+// require("dotenv").config();
 const app =express();
 const port=8000;
 
