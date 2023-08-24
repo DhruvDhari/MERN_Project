@@ -2,7 +2,7 @@
 
 #secret
 node_modules
-.env
+
 
 # dependencies
 /node_modules
