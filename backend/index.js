@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from"dotenv";
 dotenv.config();
-
+//require is used when type=commom.js or before es6
 // const express =require("express");
 // const mongoose =require("mongoose");
 // require("dotenv").config();
