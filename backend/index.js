@@ -1,24 +1,7 @@
-// import express from "express";
-// import mongoose from "mongoose";
-
-const express =require("express");
-const mongoose =require("mongoose");
-require("dotenv").config();
+import express from "express";
 const app =express();
 const port=8000;
 
-
-
-mongoose.connect("mongodb+srv://dmaster:"+process.env.MONGO_PASSWORD+"@cluster0.klv2gyk.mongodb.net/?retryWrites=true&w=majority",{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}
-).then((x)=>{
-    console.log("Connected to Mongo !");
-})
-.catch((err)=>{
-    console.log("Error while connecting to Mongo :",err);
-});
 
 app.get('/',(req,res)=>{
     res.send("hello bhai");
