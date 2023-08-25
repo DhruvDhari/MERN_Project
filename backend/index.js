@@ -1,11 +1,15 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from"dotenv";
-dotenv.config();
+// import express from "express";
+// import mongoose from "mongoose";
+// import dotenv from"dotenv";
+// dotenv.config();
 //require is used when type=commom.js or before es6
-// const express =require("express");
-// const mongoose =require("mongoose");
-// require("dotenv").config();
+const express =require("express");
+const mongoose =require("mongoose");
+require("dotenv").config();
+const JwtStrategy = require('passport-jwt').Strategy,
+    ExtractJwt = require('passport-jwt').ExtractJwt;
+const passport=require("passport");
+const User=require("./models/User");
 const app =express();
 const port=8000;
 
@@ -29,3 +33,25 @@ app.get('/',(req,res)=>{
 app.listen(port,()=>{
     console.log("App is running on port ",port);
 })
+
+
+//setup passport
+
+
+let opts = {}
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = 'secret';
+
+passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    User.findOne({id: jwt_payload.sub}, function(err, user) {
+        if (err) {
+            return done(err, false);
+        }
+        if (user) {
+            return done(null, user);
+        } else {
+            return done(null, false);
+            // or you could create a new account
+        }
+    });
+}));
