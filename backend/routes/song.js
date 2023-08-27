@@ -1,9 +1,12 @@
 const express =require("express");
 const passport = require("passport");
 const router=express.Router();
-const Song=require("../models/Song")
+const Song=require("../models/Song");
+// const User =require("../models/User");
 
-router.post("/create",passport.authenticate("user"),async(req,res)=>{
+
+// router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    router.post("/create",passport.authenticate("user"),async(req,res)=>{
 
     const{name,thumbnail,track}=req.body;
 
@@ -17,5 +20,14 @@ router.post("/create",passport.authenticate("user"),async(req,res)=>{
 
 
 })
+
+// router.get("/get/mysongs",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    router.get("/get/mysongs",passport.authenticate("user"),async(req,res)=>{
+
+    const currentUser=req.user;
+    const songs = await Song.find({artist:req.user._id});
+    return res.status(200).json({data:songs});
+
+});
 
 module.export =router;
