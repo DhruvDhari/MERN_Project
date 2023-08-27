@@ -5,7 +5,12 @@ const Song=require("../models/Song");
 // const User =require("../models/User");
 
 
+<<<<<<< HEAD
 router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+=======
+// router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    router.post("/create",passport.authenticate("user"),async(req,res)=>{
+>>>>>>> a614f5e8bd60c5ded2c264511a4bb90ad594a623
 
     const{name,thumbnail,track}=req.body;
 
@@ -20,7 +25,12 @@ router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res
 
 })
 
+<<<<<<< HEAD
 router.get("/get/mysongs",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+=======
+// router.get("/get/mysongs",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    router.get("/get/mysongs",passport.authenticate("user"),async(req,res)=>{
+>>>>>>> a614f5e8bd60c5ded2c264511a4bb90ad594a623
 
     const currentUser=req.user;
     const songs = await Song.find({artist:req.user._id});
@@ -28,4 +38,8 @@ router.get("/get/mysongs",passport.authenticate("jwt",{session:false}),async(req
 
 });
 
+<<<<<<< HEAD
 module.exports =router;
+=======
+module.export =router;
+>>>>>>> a614f5e8bd60c5ded2c264511a4bb90ad594a623
