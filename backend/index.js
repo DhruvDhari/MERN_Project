@@ -40,7 +40,7 @@ app.listen(port,()=>{
 
 let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secret';
+opts.secretOrKey = "thisKeyIsSupposedToBeSecret";
 
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
     User.findOne({id: jwt_payload.sub}, function(err, user) {
