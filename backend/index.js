@@ -10,9 +10,15 @@ const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport=require("passport");
 const User=require("./models/User");
+const authRoutes =require("./routes/auth");
+const songRoutes=require("./routes/song");
+
+
+
 const app =express();
 const port=8000;
 
+app.use(express.json());
 
 
 mongoose.connect("mongodb+srv://dmaster:"+process.env.MONGO_PASSWORD+"@cluster0.klv2gyk.mongodb.net/?retryWrites=true&w=majority",{
@@ -29,6 +35,9 @@ mongoose.connect("mongodb+srv://dmaster:"+process.env.MONGO_PASSWORD+"@cluster0.
 app.get('/',(req,res)=>{
     res.send("hello bhai");
 })
+
+app.use("/auth",authRoutes);
+app.use("/song",songRoutes);
 
 app.listen(port,()=>{
     console.log("App is running on port ",port);
