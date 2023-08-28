@@ -3,6 +3,7 @@ const passport=require("passport")
 const router=express.Router();
 const Playlist=require("../models/Playlist");
 const User=require("../models/User");
+const Song=require("../models/Song");
 
 router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res)=>{
     const currentUser =req.user;
@@ -40,6 +41,31 @@ router.get("/get/artist/:artistId",passport.authenticate("jwt",{session:false}),
         return res.status(304).json({err:"Invalid Artist ID"});
     }
     return res.status(200).json({data:playlists});
+});
+
+router.post("/add/song",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    const currentUser =req.user;
+    const {playlistId,songId}=req.body;
+
+    const playlist=await Playlist.findOne({_id:playlistId});
+
+    if(!playlist){
+        return res.status(304).json({err:"PlayList does not exist"});
+    }
+
+    if(playlist.owner !== currentUser._id && !playlist.collaborators.includes(currentUser._id) ){
+        return res.status(400).json({err:"Not allowed"});
+    }
+
+    const song=await Song.findOne({_id:songId});
+    if(!song){
+        return res.status(304).json({err:"Song does not exist"});
+    }
+
+    playlist.songs.push(songId);
+    await playlist.save();
+    return res.status(200).json(playlist);
+
 });
 
 module.exports = router;
