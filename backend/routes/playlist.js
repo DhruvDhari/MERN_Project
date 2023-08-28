@@ -53,7 +53,7 @@ router.post("/add/song",passport.authenticate("jwt",{session:false}),async(req,r
         return res.status(304).json({err:"PlayList does not exist"});
     }
 
-    if(playlist.owner !== currentUser._id && !playlist.collaborators.includes(currentUser._id) ){
+    if(!playlist.owner.equals(currentUser._id) && !playlist.collaborators.includes(currentUser._id) ){
         return res.status(400).json({err:"Not allowed"});
     }
 
@@ -68,4 +68,4 @@ router.post("/add/song",passport.authenticate("jwt",{session:false}),async(req,r
 
 });
 
-module.exports = router;
+module.exports = router; 
