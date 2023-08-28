@@ -18,4 +18,8 @@ router.post("/create",passport.authenticate("jwt",{session:false}),async(req,res
 
 });
 
+router.get("/get/:playlistId",passport.authenticate("jwt",{session:false}),async(req,res)=>{
+    const playlistId=req.params.playlistId;
+});
+
 module.exports = router;
