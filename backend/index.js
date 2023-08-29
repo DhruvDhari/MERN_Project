@@ -19,7 +19,7 @@ const playlistRoutes=require("./routes/playlist");
 const app =express();
 const port=8000;
 
-app.use(express.json());
+app.use(express.json());//this is used to tell ki req.body se joh bhi kuch aae,convert it into json
 
 
 mongoose.connect("mongodb+srv://dmaster:"+process.env.MONGO_PASSWORD+"@cluster0.klv2gyk.mongodb.net/?retryWrites=true&w=majority",{
