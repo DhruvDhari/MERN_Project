@@ -4,7 +4,7 @@ import LoginComponent from "./routes/Login";
 
 function App() {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen font-poppins ">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HelloComponent/>}/>
