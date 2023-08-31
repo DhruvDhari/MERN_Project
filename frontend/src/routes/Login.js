@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
 import TextInput from '../components/shared/Textinput';
+import PasswordInput from '../components/shared/Passwordinput';
 
 const LoginComponent=()=>{
     return(
@@ -11,7 +12,8 @@ const LoginComponent=()=>{
             <div className="inputRegion w-1/3 py-10 flex items-center justify-center flex-col" >
                 {/* isme email and password aaega and login button */}
              <div className='font-bold mb-12'>To continue, log in to Spotify.</div>   
-             <TextInput/>   
+             <TextInput label="Email address or username" placeholder="Email address or username" />   
+             <PasswordInput label="Password" placeholder="Password" />
 
             </div>
        
