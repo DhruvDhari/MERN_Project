@@ -1,4 +1,4 @@
-import './App.css';
+import "./output.css";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 
@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route 
       path="/" 
-      element={<div>hello</div>}
+      element={<div className="bg-blue-500">hello</div>}
       />
       <Route 
       path="/h/hi" 
