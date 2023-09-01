@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import TextInput from '../components/shared/Textinput';
 import PasswordInput from '../components/shared/Passwordinput';
+import { Link } from 'react-router-dom';
 
 const SignupComponent=()=>{
     return(
@@ -29,7 +30,10 @@ const SignupComponent=()=>{
                 Already have an account?
             </div>
             <div className="border-1 border-gray-500 text-gray-500 w-full flex items-center justify-center py-4 rounded-full font-bold">
+                <Link to="/login" >
                 LOG IN INSTEAD
+                </Link>
+               
             </div>
 
             </div>
