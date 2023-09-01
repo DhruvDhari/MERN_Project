@@ -2,6 +2,7 @@
 
 #secret
 node_modules
+output.css
 
 
 # dependencies
