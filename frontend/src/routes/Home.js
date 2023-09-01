@@ -11,7 +11,9 @@ const HomeComponent=()=>{
                 </div>
 
                 <div >
-                <IconText iconName={"material-symbols:home"} displayText={"Home"}/>
+                <IconText iconName={"material-symbols:home"} displayText={"Home"} active />
+                <IconText iconName={"material-symbols:search-rounded"} displayText={"Search"}/>
+                <IconText iconName={"icomoon-free:books"} displayText={"Library"}/>
                 </div>
                 
 
