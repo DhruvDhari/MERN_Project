@@ -38,7 +38,12 @@ const HomeComponent=()=>{
 
             </div>
 
-            <div className="right h-full">
+            <div className="right h-full w-4/5">
+                <div className="navbar w-full">
+
+
+                </div>
+                <div className="content"></div>
 
             </div>
         </div>
